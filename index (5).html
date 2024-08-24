@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="favicon (6).ico" type="image/x-icon">
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Matemasie&display=swap');
+
+        body {
+            width: 90%;
+            height: 100%;
+            background:blueviolet;
+            align-items: center;
+            justify-content: center;
+            display: flex;
+            flex-direction: column;
+            margin: 0px;
+            opacity: 10px;
+        }
+
+        .container {
+            align-items: center;
+            justify-content: center;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            top: 180px;
+            left: 500px -500px;
+            background-color: rgb(224, 191, 255);
+            width: 300px;
+            height: 200px;
+            border-radius: 45px;
+            padding: 10px;
+            box-shadow: 0px 0px 30px #000000;
+        }
+
+        input {
+            border-radius: 10px;
+        }
+
+        #info {
+            background-color: #ffffff;
+            align-items: center;
+            justify-content: center;
+            display: flex;
+            flex-direction: column;
+            border-radius: 10px;
+            box-sizing: border-box;
+            width: 200px;
+        }
+
+        input {
+            margin: 10px;
+        }
+
+        .btn-audio {
+            position: relative;
+            top: -3px;
+            left: 600px -600px;
+            height: 50px;
+            box-sizing: border-box;
+            margin: 5px;
+        }
+
+        .cima {
+            align-items: center;
+            justify-content: center;
+            display: flex;
+            flex-direction: row;
+            border-radius: 10px;
+            background-color: rgb(210, 161, 255);
+            width: 1500px;
+            height: 100px;
+            left: 500px -500px;
+            box-shadow: 0px 0px 30px #000000;
+
+        }
+
+        ul{
+            padding: 0px;
+text-align: center;
+width: auto;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="cima">
+        <audio id="audio-principal" src="Bethesda - Sergio Lopes - Igreja de Itaquera _ SP _ Abril.2023.mp3" controls></audio>
+        <audio id="audio1" src="Bethesda - Sergio Lopes - Igreja de Itaquera _ SP _ Abril.2023.mp3"></audio>
+        <audio id="audio2" src="Lágrimas.mp3"></audio>
+        <audio id="audio3" src="Oficina G3 _ João.mp3"></audio>
+        <button class="btn-audio" onclick="MudarAudio1()">▶¹</button>
+        <button class="btn-audio" onclick="MudarAudio2()">▶²</button>
+        <button class="btn-audio" onclick="MudarAudio3()">▶³</button>
+    </div>
+    <div class="container">
+        <h1 style="font-family: 'Matemasie', sans-serif;"> Pesquisar Carros</h1>
+        <input id="input" type="text">
+        <button id="btn" onclick="Pesquisar()">Pesquisar</button>
+        <ul id="info"></ul>
+    </div>
+    <script>
+        let lista = [
+            {
+                nome: "Fusca"
+            },
+            {
+                nome: "Chevrolet"
+            },
+            {
+                nome: "Cadillac"
+            },
+            {
+                nome: "Batmovel"
+            },
+            {
+                nome: "Uno"
+            },
+            {
+                nome: "Ferrari"
+            },
+            {
+                nome: "Lamborguine"
+            },
+            {
+                nome: "Toyota"
+            },
+            {
+                nome: "Volkswagen"
+            },
+            {
+                nome: "Kombi"
+            },
+            {
+                nome: "Palio"
+            }
+        ]
+
+        function Pesquisar() {
+            debugger
+            var InputCarro = document.getElementById("input").value;
+            var nome_encontrado = null
+            var listaUl = document.getElementById("info");
+
+            for (let posicao = 0; posicao < lista.length; posicao = posicao + 1) {
+
+                if (InputCarro == lista[posicao].nome) {
+                    nome_encontrado = lista[posicao]
+                    break
+                }
+
+            }
+
+
+            if (nome_encontrado != null) {
+
+                const Informacao = ` 
+                 <p><b>Nome do Carro:</b> ${nome_encontrado.nome} </p>
+                 `
+                listaUl.innerHTML = Informacao;
+            }
+            else {
+                listaUl.innerText = "Nome de carro não encontrado!"
+            }
+        }
+
+var AudioPrincipal = document.getElementById("audio-principal");
+var Audio1 = document.getElementById("audio1");
+var Audio2 = document.getElementById("audio2");
+var Audio3 = document.getElementById("audio3")
+
+        function MudarAudio1() {
+            AudioPrincipal.src = Audio1.src
+        }
+
+        function MudarAudio2() {
+            AudioPrincipal.src = Audio2.src
+        }
+
+        function MudarAudio3() {
+            AudioPrincipal.src = Audio3.src
+        }
+
+    </script>
+</body>
+
+</html>
